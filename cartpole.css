@@ -1,0 +1,41 @@
+.my_container {
+  margin: 0 auto;
+  max-width: 80%;
+  text-align: center;
+}
+
+.start_btn {
+  font-weight: bold;
+  font-size: large;
+  background: #f44336;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  color: white;
+}
+
+.reset_btn {
+  font-weight: bold;
+  font-size: large;
+  background: #4caf50;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  color: white;
+}
+
+.heading1 {
+  color: brown;
+  font-size: xxx-large;
+  text-shadow: 3px 5px 5px #9e9e9e;
+}
+
+.score {
+  display: inline-block;
+  font-size: 23px;
+  color: #b72c00;
+  font-weight: 600;
+}
+#hi-score {
+  font-size: 36px;
+  color: #00bcd4;
+  font-weight: 900;
+}

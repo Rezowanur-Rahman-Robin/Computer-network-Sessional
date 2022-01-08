@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from jeffjar.me/fourier/lec3b.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Jan 2022 07:38:24 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link rel="stylesheet" href="jemdoc.css" type="text/css" />
+<title>Applying Fourier Series to Hot Rings</title>
+</head>
+<body>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+    var pageTracker = _gat._getTracker("UA-131436916-2");
+    pageTracker._trackPageview();
+} catch(err) {}</script>
+<table summary="Table for page layout." id="tlayout">
+<tr valign="top">
+<td id="layout-menu">
+<div class="menu-item"><a href="index.html">Home</a></div>
+<div class="menu-category">Introduction</div>
+<div class="menu-item"><a href="intro.html">Introduction</a></div>
+<div class="menu-category">Fourier Series</div>
+<div class="menu-item"><a href="lec1.html">Periodicity</a></div>
+<div class="menu-item"><a href="lec2.html">Monsieur&nbsp;Fourier</a></div>
+<div class="menu-item"><a href="lec2b.html">Finding&nbsp;Coefficients</a></div>
+<div class="menu-item"><a href="lec3a.html">Interpretation</a></div>
+<div class="menu-item"><a href="lec3b.html" class="current">Hot&nbsp;Rings</a></div>
+<div class="menu-item"><a href="lec4.html">Orthogonality</a></div>
+<div class="menu-category">Fourier Transforms</div>
+<div class="menu-item"><a href="lec5.html">Motivation</a></div>
+<div class="menu-item"><a href="lec6.html">Inversion&nbsp;&amp;&nbsp;Examples</a></div>
+<div class="menu-item"><a href="lec7.html">Duality&nbsp;&amp;&nbsp;Symmetry</a></div>
+<div class="menu-item"><a href="lec8.html">Scaling&nbsp;&amp;&nbsp;Derivatives</a></div>
+<div class="menu-item"><a href="lec9.html">Convolution</a></div>
+</td>
+<td id="layout-content">
+<div id="toptitle">
+<h1>Applying Fourier Series to Hot Rings</h1>
+</div>
+<p>It is now time to pay our scholarly dues. We will discuss Fourier's initial application of Fouirer Series to the problem of <b>heat transfer on a ring</b>. As Prof. Osgood said, the hot-ring problem has become an important part of our intellectual heritage, and we will find it useful to go through this famous example.</p>
+<p>In Paris, there's lots of big heavy anchor rings that you can find in the city. As the story goes, Fourier stumbled across one of these rings one day, and wanted to figure out the dynamics of heat flow on one of these rings. I really have no idea behind whether this is true or not, but hopefully this story provides some (?) motivation for why hot rings are a problem in the first case.</p>
+<p>Anyways, Fourier considered the following problem:</p>
+<div class="infoblock">
+<div class="blocktitle">Fourier's problem</div>
+<div class="blockcontent">
+<p>Suppose we heated up a ring to have a particular temperature distribution at different points along the ring. If we waited for the ring to cool down, how would this temperature distribution evolve over time?</p>
+</div></div>
+<p>To translate this physical question into a mathematical statement, suppose we write down the initial temperature distribution as some function <img class="eq" src="eqs/509596383745784049-130.png" alt="f(x)" style="vertical-align: -5px" /> of the position <img class="eq" src="eqs/15360046201-130.png" alt="x" style="vertical-align: -1px" /> along the ring. The quantity we wish to find is the temperature at position <img class="eq" src="eqs/15360046201-130.png" alt="x" style="vertical-align: -1px" /> after some time <img class="eq" src="eqs/14848044661-130.png" alt="t" style="vertical-align: -1px" />, which we will write as <img class="eq" src="eqs/4593340594708071136-130.png" alt="u(x,t)" style="vertical-align: -5px" />. The initial condition of the problem is that at time <img class="eq" src="eqs/1495230934591648944-130.png" alt="t=0" style="vertical-align: -1px" />, the temperature distribution is given by <img class="eq" src="eqs/6519130764172070633-130.png" alt="u(x,0) = f(x)" style="vertical-align: -5px" />.</p>
+<p>The reason why we use Fourier Series to solve this problem is that the function <img class="eq" src="eqs/4593340594708071136-130.png" alt="u(x,t)" style="vertical-align: -5px" /> is actually <i>periodic</i> in <img class="eq" src="eqs/15360046201-130.png" alt="x" style="vertical-align: -1px" />: the points <img class="eq" src="eqs/15360046201-130.png" alt="x" style="vertical-align: -1px" /> and <img class="eq" src="eqs/5999452984653080389-130.png" alt="x+1" style="vertical-align: -2px" /> refer to the same physical location on the ring. (We're using units where the ring is one unit around). It follows that <img class="eq" src="eqs/4593340594708071136-130.png" alt="u(x,t)" style="vertical-align: -5px" /> must equal <img class="eq" src="eqs/5902001541385700810-130.png" alt="u(x+1,t)" style="vertical-align: -5px" />, since they describe the temperature at the same point along the ring.</p>
+<h2>The heat equation</h2>
+<p>The time evolution of temperature on the ring is governed by a partial differential equation known as the <b>heat equation</b>. It turns out that the heat equation isn't terribly difficult to derive from simple physical considerations; if I have time later this quarter, I might come back to this page and work out the derivation here. But for our purposes, we can just take the heat equation for what it is: it tells us how <i>quickly</i> the temperature at any particular point changes over time, and relates this to the spatial variation in temperature near that point.</p>
+<p>Mathematically, the heat equation is written as</p>
+
+<div class="eqwl"><img class="eqwl" src="eqs/1887187869554306544-130.png" alt="     frac {partial u}{partial t} = k frac {partial^2 u}{partial x^2}, " />
+<br /></div><p>where <img class="eq" src="eqs/13696041194-130.png" alt="k" style="vertical-align: -1px" /> is a physical constant (the heat diffusivity?) that tells you how well that particular material conducts heat. In this problem, we'll choose units so that <img class="eq" src="eqs/3776981715318044336-130.png" alt="k = frac 1 2" style="vertical-align: -7px" />.</p>
+<p>The form of the heat equation actually tells us qualitative behavior about how we expect solutions to behave, but for now we'll just move on to the solution. (Honestly, I might just come back and redo this problem as a physicist, so that we could interpret the units of various variables and use dimensions to help us out&hellip;)</p>
+<p>The heat equation is a partial differential equation (PDE), which isn't quite as simple to solve as an <i>ordinary</i> differential equation (ODE). In this problem, the main trick is to use Fourier Series to help us reframe the (PDE) in terms of an ODE. (Note that depending on your level of rigor, you might interpret differently <i>how</i> exactly Fourier Series help us here.)</p>
+<h2>A Fourier Series Ansatz</h2>
+<p>Motivated by the periodicity of <img class="eq" src="eqs/2876587177929182382-130.png" alt="u(x,t) = u(x+1,t)" style="vertical-align: -5px" />, we may attempt to expand <img class="eq" src="eqs/4593340594708071136-130.png" alt="u(x,t)" style="vertical-align: -5px" /> itself in terms of a Fourier Series as</p>
+
+<div class="eqwl"><img class="eqwl" src="eqs/443843535505478698-130.png" alt="     u(x,t) = sum_n c_n(t) e^{2 pi inx}, " />
+<br /></div><p>where the Fourier coefficients <img class="eq" src="eqs/769278970012424479-130.png" alt="c_n(t)" style="vertical-align: -5px" /> are unknowns that we'll have to solve for. In physics, we call this an &lsquo;&lsquo;ansatz&rsquo;&rsquo;, or a guess about the <i>shape</i> of the solution. If we guess a good ansatz, the problem becomes easier. In this case, with the benefit of hindsight, we know already that using Fourier Series is the right approach.</p>
+<p>Notice that I've put in <i>time-dependence</i> into the Fourier coefficients <img class="eq" src="eqs/799031295774617265-130.png" alt="c_n" style="vertical-align: -4px" /> themselves; that is, they are no longer constants, but they vary in time. The reason for this is that we want <img class="eq" src="eqs/4593340594708071136-130.png" alt="u(x,t)" style="vertical-align: -5px" /> to vary in time, but since the Fourier sinusoids <img class="eq" src="eqs/2796504514292866952-130.png" alt="e^{2 pi int}" style="vertical-align: -1px" /> don't vary in time (they only vary in space), we need to introduce the time-dependence into their coefficients.</p>
+<p>In a sense, we've reduced the problem to finding the set of functions <img class="eq" src="eqs/769278970012424479-130.png" alt="c_n(t)" style="vertical-align: -5px" /> (which, again, represent the time-varying weights of each of the Fourier components.) If we knew what these functions were, we could plug them into our ansatz above and get the form of <img class="eq" src="eqs/4593340594708071136-130.png" alt="u(x,t)" style="vertical-align: -5px" />.</p>
+<h2>Solving for the Coefficients</h2>
+<p>To solve for the coefficients <img class="eq" src="eqs/769278970012424479-130.png" alt="c_n(t)" style="vertical-align: -5px" />, we plug in our Fourier ansatz into the heat equation:</p>
+
+<div class="eqwl"><img class="eqwl" src="eqs/7202513774386921980-130.png" alt="     frac {partial}{partial t} sum_n c_n(t) e^{2 pi inx} = frac 1 2 frac {partial^2} {partial x^2} sum_n c_n(t) e^{2 pi inx} " />
+<br /></div><p>Let's consider what happens when these derivatives hit the ansatz. On the LHS, the only time-dependence is in the coefficients <img class="eq" src="eqs/769278970012424479-130.png" alt="c_n(t)" style="vertical-align: -5px" />, so the time-derivative just turns the <img class="eq" src="eqs/769278970012424479-130.png" alt="c_n(t)" style="vertical-align: -5px" /> into <img class="eq" src="eqs/6156514499268783979-130.png" alt="c_n'(t)" style="vertical-align: -6px" />. On the RHS, the only spatial-dependence is in the complex exponentials <img class="eq" src="eqs/2796504514296867188-130.png" alt="e^{2 pi inx}" style="vertical-align: -1px" />; since we are hitting it with the spatial derivative twice, we pull down <i>two</i> factors whatever's next to <img class="eq" src="eqs/15360046201-130.png" alt="x" style="vertical-align: -1px" /> in the exponent. So our expression simplifies to</p>
+
+<div class="eqwl"><img class="eqwl" src="eqs/2738681566006531471-130.png" alt="     sum_n c_n'(t) e^{2 pi inx} = frac 1 2 sum_n c_n(t) (2 pi in)^2 e^{2 pi inx} " />
+<br /></div><p>For this equality to hold, each term on the left must equal its corresponding term on the right. (There's a more subtle argument, but thankfully the naive approach works.) If we match the coefficients of the exponentials, we find that</p>
+
+<div class="eqwl"><img class="eqwl" src="eqs/280823649395391950-130.png" alt="     c_n'(t) = frac 1 2 (2 pi in)^2 c_n(t), " />
+<br /></div><p>or </p>
+
+<div class="eqwl"><img class="eqwl" src="eqs/3400838231192336166-130.png" alt="     c_n'(t) = -2pi^2n^2 c_n(t), " />
+<br /></div><p>which is an <i>ordinary</i> differential equation in <img class="eq" src="eqs/14848044661-130.png" alt="t" style="vertical-align: -1px" /> for the coefficients <img class="eq" src="eqs/769278970012424479-130.png" alt="c_n(t)" style="vertical-align: -5px" />! The solution to this first-order ODE can be readily written down as</p>
+
+<div class="eqwl"><img class="eqwl" src="eqs/4008550773060160275-130.png" alt="     c_n(t) = c_n(0) e^{-2 pi^2 n^2 t}, " />
+<br /></div><p>which says that each of the Fourier components start of with some initial value <img class="eq" src="eqs/769278970080424659-130.png" alt="c_n(0)" style="vertical-align: -5px" /> at time <img class="eq" src="eqs/1495230934591648944-130.png" alt="t=0" style="vertical-align: -1px" />, and then decay exponentially in time.</p>
+<h3>Matching Initial Conditions</h3>
+<p>Our final task is to figure out the initial values of the coefficients <img class="eq" src="eqs/769278970080424659-130.png" alt="c_n(0)" style="vertical-align: -5px" />. We will need to use one final piece of information: the initial temperature distribution <img class="eq" src="eqs/509596383745784049-130.png" alt="f(x)" style="vertical-align: -5px" /> at time <img class="eq" src="eqs/1495230934591648944-130.png" alt="t=0" style="vertical-align: -1px" />. Somehow the information about <img class="eq" src="eqs/509596383745784049-130.png" alt="f(x)" style="vertical-align: -5px" /> must be encoded within these coefficients.</p>
+<p>Upon a bit of thought, we realize that the initial values of the coefficients <img class="eq" src="eqs/769278970080424659-130.png" alt="c_n(0)" style="vertical-align: -5px" /> are actually the Fourier coefficients <img class="eq" src="eqs/8882096687030253169-130.png" alt="hat f(0)" style="vertical-align: -5px" /> of the initial temperature distribution <img class="eq" src="eqs/509596383745784049-130.png" alt="f(x)" style="vertical-align: -5px" />! Since the coefficients <img class="eq" src="eqs/769278970012424479-130.png" alt="c_n(t)" style="vertical-align: -5px" /> represent the Fourier coefficients of <img class="eq" src="eqs/4593340594708071136-130.png" alt="u(x,t)" style="vertical-align: -5px" /> at time <img class="eq" src="eqs/14848044661-130.png" alt="t" style="vertical-align: -1px" />, their initial values <img class="eq" src="eqs/769278970080424659-130.png" alt="c_n(0)" style="vertical-align: -5px" /> must be the Fourier coefficients of <img class="eq" src="eqs/4593340594768071340-130.png" alt="u(x,0)" style="vertical-align: -5px" /> at time <img class="eq" src="eqs/1495230934591648944-130.png" alt="t=0" style="vertical-align: -1px" />. in other words, the <img class="eq" src="eqs/769278970080424659-130.png" alt="c_n(0)" style="vertical-align: -5px" /> are the Fourier coefficients <img class="eq" src="eqs/8882096686944252911-130.png" alt="hat f(n)" style="vertical-align: -5px" /> of the initial temperature distribution <img class="eq" src="eqs/509596383745784049-130.png" alt="f(x)" style="vertical-align: -5px" />.</p>
+<p>So <img class="eq" src="eqs/2558567451729945674-130.png" alt="c_n(0) = hat f(n)" style="vertical-align: -5px" />.</p>
+<h2>Putting it together</h2>
+<p>Putting in our solution for the time-dependence of the coefficients <img class="eq" src="eqs/769278970012424479-130.png" alt="c_n(t)" style="vertical-align: -5px" />, we arrive at our final expression for the time-varying heat distribution on the ring:</p>
+
+<div class="eqwl"><img class="eqwl" src="eqs/8563975183302066614-130.png" alt="     u(x,t) = sum_n hat f(n) e^{-2pi^2n^2t} e^{2pi inx}, " />
+<br /></div><p>where <img class="eq" src="eqs/8882096686944252911-130.png" alt="hat f(n)" style="vertical-align: -5px" /> are the Fourier coefficients of the initial heat distribution</p>
+
+<div class="eqwl"><img class="eqwl" src="eqs/8434480572609604292-130.png" alt="     hat f(n) = int_0^1 e^{-2pi i n x} f(x) dx. " />
+<br /></div><p>This final result is quite magical and beautiful: we have an explicit formula for the solution of the heat equation! There's plenty to be said about this solution, but I'm getting hungry so I'm going to eat some lunch now.</p>
+<p>Okay back from lunch now. Notice that the Fourier coefficients of the solution</p>
+
+<div class="eqwl"><img class="eqwl" src="eqs/5580162984807246975-130.png" alt=" c_n(t) =  e^{-2pi^2n^2t}hat f(n) " />
+<br /></div><p>decay exponentially in time, and that the bigger the <img class="eq" src="eqs/14080042351-130.png" alt="n" style="vertical-align: -1px" />, the quicker the coefficient decays to zero. In a sense, we can say that the heat equation &lsquo;&lsquo;smoothes out the wiggles&rsquo;&rsquo; in the temperature around the ring; the shorter the wavelength of the wiggles, the more quickly the wiggles get smoothed out.</p>
+<p>In particular, note that the <img class="eq" src="eqs/5261102140477498262-130.png" alt="n=0" style="vertical-align: -1px" /> coefficient actually remains constant over time, because the exponential term is one. This tells us that the average temperature of the ring <img class="eq" src="eqs/3390133520112374514-130.png" alt="hat f (0) = int_0^1 f(t) dt" style="vertical-align: -8px" /> stays constant over time; in other words, heat is conserved. As <img class="eq" src="eqs/2253346866684938343-130.png" alt="t to infty" style="vertical-align: -1px" />, all of the terms die away except for the <img class="eq" src="eqs/5261102140477498262-130.png" alt="n=0" style="vertical-align: -1px" /> term, and the ring just becomes uniformly hot (or cold) with the average temperature.</p>
+<h2>A Taste of Convolution</h2>
+<p>The next day (Mon Week 2), we made a few more concluding remarks about the heat equation; in particular, the fact the the solution could be written as a <b>convolution</b> integral. We'll be discussing convolutions in their full glory later on, but it's a nice sneak peak into what's to come.</p>
+<p>If we expand the solution to the heat equation by plugging in the formula for the Fourier coefficients <img class="eq" src="eqs/8882096686944252911-130.png" alt="hat f(n)" style="vertical-align: -5px" />, it looks like</p>
+
+<div class="eqwl"><img class="eqwl" src="eqs/7528030630496518299-130.png" alt="   u(x,t) = sum_n overbrace{left[int_0^1 e^{-2pi iny} f(y) dy right]}^{hat f(n)}e^{-2pi^2n^2t}e^{2pi inx} dx, " />
+<br /></div><p>and by grouping together and combining all the terms that depend on <img class="eq" src="eqs/14080042351-130.png" alt="n" style="vertical-align: -1px" />, we can simplify the expression to</p>
+
+<div class="eqwl"><img class="eqwl" src="eqs/5289480299866310322-130.png" alt="   u(x,t) = int_0^1 underbrace{left(sum_n e^{-2pi in(x-y)} e^{-2pi^2n^2t}right)}_{g(x-y, t)} f(y) dy. " />
+<br /></div><p>Our solution <img class="eq" src="eqs/4593340594708071136-130.png" alt="u(x,t)" style="vertical-align: -5px" /> can now be written as a <b>convolution integral</b>,</p>
+
+<div class="eqwl"><img class="eqwl" src="eqs/890433274921944326-130.png" alt=" u(x,t) = int_0^1 g(x-y, t) f(y) dy " />
+<br /></div><p>where the function <img class="eq" src="eqs/7672516679268048170-130.png" alt="g(x,t)" style="vertical-align: -5px" /> is known as the <b>fundamental solution</b> or <b>Green's function</b> of the heat equation, and takes the form</p>
+
+<div class="eqwl"><img class="eqwl" src="eqs/6684808958816076216-130.png" alt="   g(sum_n e^{-2pi inx} e^{-2pi^2n^t}). " />
+<br /></div><p>We'll discuss these concepts in much more detail later: it turns out that convolving two functions is a very general thing we can do, and the fact that solutions of the heat equation take the form of a <i>convolution</i> with the fundamental solution has deeper consequences and properties. But for now, we will take this as foreshadowing for later.</p>
+<h2>A preview of delta &lsquo;functions&rsquo;</h2>
+<p>Earlier, we figured out already what would happen if we took the <img class="eq" src="eqs/2253346866684938343-130.png" alt="t to infty" style="vertical-align: -1px" /> limit of the heat equation &ndash; everything would die out except for the <img class="eq" src="eqs/5261102140477498262-130.png" alt="n=0" style="vertical-align: -1px" /> component, and the heat distro would apporach a uniform distribution of its average value. Correspondingly, the green's function <img class="eq" src="eqs/7672516679268048170-130.png" alt="g(x,t)" style="vertical-align: -5px" /> approaches unity as <img class="eq" src="eqs/2253346866684938343-130.png" alt="t to infty" style="vertical-align: -1px" />.</p>
+<p>What if we look at the other limit, as <img class="eq" src="eqs/7195186961999796212-130.png" alt="t to 0" style="vertical-align: -1px" />? If we directly plug in <img class="eq" src="eqs/1495230934591648944-130.png" alt="t=0" style="vertical-align: -1px" /> to the greens function, we find that</p>
+
+<div class="eqwl"><img class="eqwl" src="eqs/6682938494350837582-130.png" alt="     lim_{t to 0} g(x,t) = sum_n e^{2 pi inx}; " />
+<br /></div><p>i.e., it approaches a Fourier Series where all the coefficients are 1.</p>
+<p>There is no way to make sense of this series &lsquo;&lsquo;classically&rsquo;&rsquo; in terms of functions that we know and love; however, the function <i>does</i> converge into another sense to a comb of <img class="eq" src="eqs/3780418731882909920-130.png" alt="delta" style="vertical-align: -1px" />-function spikes. We'll also talk about delta functions in the future and spend good quality time with them. They are pretty cool, but also pretty weird.</p>
+<div id="footer">
+<div id="footer-text">
+Page generated 2019-01-28 12:43:56 PST, by <a href="http://jemdoc.jaboc.net/">jemdoc</a>.
+(<a href="lec3b.jemdoc">source</a>)
+</div>
+</div>
+</td>
+</tr>
+</table>
+</body>
+
+<!-- Mirrored from jeffjar.me/fourier/lec3b.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Jan 2022 07:38:35 GMT -->
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<!-- Mirrored from jeffjar.me/cartpole.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Jan 2022 07:36:22 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="UTF-8">
+    <title>Computer Networks(Sessional)</title>
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="cartpole.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131436916-2"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-131436916-2');
+    </script>
+    <!-- <script type="text/javascript" src="http://livejs.com/live.js"></script> -->
+</head>
+
+<body>
+<div style="max-width: 100%; text-align: left; padding: 0 1em 0 1em;" id="big-container">
+
+    <div class="my_container">
+        <img style="width: 210px;" src="logo.png" alt="Cuet Logo">
+        <h1 class="heading1">
+            Chittagong University of Engineering & Technology
+        </h1>
+        <h1 class="heading2">
+            Computer Networks(Sessional) Final Project
+        </h1>
+        <div class="description">
+            <div class="des_left">
+             
+            </div>
+            <div class="des_left">
+             
+            </div>
+        </div>
+        <h1>Can you balance this cartpole?</h1>
+
+        <p>
+            Here is a pole sitting on top of a cart. 
+            <!-- If the pole falls down, then you lose. If the cart falls off the platform, you also lose. --> 
+            How long can you balance the pole?
+        </p>
+        <p style="font-size: smaller;">
+            Use the <i>left and right arrow keys</i> (or <code>h/l</code>) to push the cart.<br/>
+            Use the <i>Start button</i> (or spacebar) to pause, resume, and restart.
+        </p>
+        
+        <p>
+            <input type="button" id="start" class="start_btn" value="Start">
+            <input type="button" id="reset" class="reset_btn" value="Reset" disabled>
+            <p class="score">
+                High Score:
+            </p> <span id="hi-score">0.0</span>
+        </p>
+        
+        <div style="display: inline-block;">
+            <canvas id="canvas" width="400" height="400" style="border: 1px black solid;">
+                Your browser doesn't support the HTML5 canvas :(
+            </canvas>
+            <p>
+                <label for="theme">Theme: </label>
+                <select id="theme" autocomplete="off">
+                      <option value="plain">Plain</option>
+                      <option value="gobears">Go Bears</option>
+                </select>
+        
+                <label for="immortal-checkbox">Immortal: </label>
+                <input type="checkbox" name="immortal-checkbox" id="immortal-checkbox" autocomplete="off">
+        
+                <br/>
+        
+                Mode:
+                <input type="radio" name="auto-radio" id="manual" checked="checked" autocomplete="off"><label for="manual">Manual</label>
+                <input type="radio" name="auto-radio" id="auto" autocomplete="off"><label for="auto">Automatic</label>
+            </p>
+        </div>
+        
+        <div style="display: none; vertical-align: top; border: 1px solid black; padding: 0 1em 0 1em; width=100%;" id="advanced-div">
+            <p style="max-width: 400px;">Write some code to balance the cart for you!</p>
+            <div style="border: 1px dashed gray; padding: 0.5em; display: inline-block;">
+                <code>
+                    function pickAction(x, xDot, theta, thetaDot, t, obj) {<br/>
+                        <textarea style="margin-left: 2em" id="code-box" rows="7" cols="33">
+        if (theta < - Math.PI / 50) {
+            return RIGHT_PUSH;
+        } else if (theta > Math.PI / 50) {
+            return LEFT_PUSH;
+        } else {
+            return NO_PUSH;
+        }
+                        </textarea>
+                    <br/>
+                    }<br/>
+                </code>
+                <br/>
+                <input type="button" id="run-code" value="Run this code">
+                <span id="run-confirm"></span>
+            </div>
+            <p style="font-size: smaller; max-width: 400px;">
+                The function <code>pickAction</code> will be executed on each frame.
+                <!-- Its arguments represent the current state of the cartpole. -->
+                It should return one of three possible actions: LEFT_PUSH, RIGHT_PUSH, or NO_PUSH.
+                See the <a href="cartpole.js" target="_blank">source code</a> for more details.
+                (The function <code>pickAction</code> is at the end of the file.)
+            </p>
+        </div>
+
+        <table border="2" style="margin: 0 auto;width: 70%;">
+            <tr>
+                <th><h2>Submitted By</h2></th>
+                <th><h2>Submitted To</h2></th>
+            </tr>
+            <tr>
+                <td rowspan="2">
+                    <h3>1704044 – Md. Aman Ullah</h3>
+                    <h3>1704045 – Md. Rezowanur Rahman</h3>
+                    <h3>1704046 – Syed Sihab-Us-Sakib</h3>
+
+                </td>
+                <td style="padding: 30px;">
+                    <h3>Dr. Mahfuzulhoq Chowdhury <br>
+                      <h4> Assistant Professor, </h4>  
+                        <h4>Dept. of CSE, CUET </h4>
+                    </h3>
+                </td>
+            </tr>
+
+            <tr>
+                <td  style="padding: 30px;">
+                    <h3>Md. Rashadur Rahman <br>
+                        <h4>Lecturer,</h4> 
+                        <h4>Dept. of CSE, CUET</h4> 
+                    </h3>
+                </td>
+            </tr>
+
+        </table>
+        
+        <img style="display:none" id="kiwibot" src="img/kiwibot.png" />
+        <img style="display:none" id="cal-flag" src="img/cal-flag.png" />
+        <img style="display:none" id="arrow" src="img/left-arrow.png" />
+        
+        <script src="cartpole.js"></script>
+        
+        
+    </div>
+
+
+</div>
+</body>
+
+

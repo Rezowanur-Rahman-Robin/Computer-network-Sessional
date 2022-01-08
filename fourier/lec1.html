@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from jeffjar.me/fourier/lec1.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Jan 2022 07:37:38 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link rel="stylesheet" href="jemdoc.css" type="text/css" />
+<title>Periodicity</title>
+</head>
+<body>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+    var pageTracker = _gat._getTracker("UA-131436916-2");
+    pageTracker._trackPageview();
+} catch(err) {}</script>
+<table summary="Table for page layout." id="tlayout">
+<tr valign="top">
+<td id="layout-menu">
+<div class="menu-item"><a href="index.html">Home</a></div>
+<div class="menu-category">Introduction</div>
+<div class="menu-item"><a href="intro.html">Introduction</a></div>
+<div class="menu-category">Fourier Series</div>
+<div class="menu-item"><a href="lec1.html" class="current">Periodicity</a></div>
+<div class="menu-item"><a href="lec2.html">Monsieur&nbsp;Fourier</a></div>
+<div class="menu-item"><a href="lec2b.html">Finding&nbsp;Coefficients</a></div>
+<div class="menu-item"><a href="lec3a.html">Interpretation</a></div>
+<div class="menu-item"><a href="lec3b.html">Hot&nbsp;Rings</a></div>
+<div class="menu-item"><a href="lec4.html">Orthogonality</a></div>
+<div class="menu-category">Fourier Transforms</div>
+<div class="menu-item"><a href="lec5.html">Motivation</a></div>
+<div class="menu-item"><a href="lec6.html">Inversion&nbsp;&amp;&nbsp;Examples</a></div>
+<div class="menu-item"><a href="lec7.html">Duality&nbsp;&amp;&nbsp;Symmetry</a></div>
+<div class="menu-item"><a href="lec8.html">Scaling&nbsp;&amp;&nbsp;Derivatives</a></div>
+<div class="menu-item"><a href="lec9.html">Convolution</a></div>
+</td>
+<td id="layout-content">
+<div id="toptitle">
+<h1>Periodicity</h1>
+</div>
+<p>Fourier Series is the study of periodic phenomena (but the techniques we learn from it will generalize to thinking about many other non-periodic things as well).  Note that even though we often think of periodic things in terms of a graph, we don't always have to; there's many other ways to think about them; in fact, sometimes they can be less misleading and more enlightening than a graph. </p>
+<p>We all know periodic behavior when we see it:</p>
+<div class="infoblock">
+<div class="blocktitle">Definition</div>
+<div class="blockcontent">
+<p>A <b>periodic phenomenon</b> is one with a regularly repeating pattern.</p>
+</div></div>
+<p>There are <i>two flavors</i> of periodicity that are conceptually a bit different:</p>
+<ul>
+<li><p>Periodicity in <b>time</b>, where you sit at a fixed point in space and wait for the signal to wash over you</p>
+</li>
+<li><p>Periodicity in <b>space</b>, where you take a snapshot at some instant, freeze the wave, and look at the entire pattern at once.</p>
+</li>
+</ul>
+<p>The two concepts of spatial and temporal periodicity naturally come together when we talk about <b>wave motion</b>. In class, we went through a very fun and vivid demonstration by doing a &lsquo;&lsquo;stadium wave&rsquo;&rsquo; where our hands went up and down and a wave swept across the lecture hall! We also made it a periodic signal by starting the wave over again once it hit the end of the classroom. With this example it became very clear the difference between a pattern in time and a pattern in space: The former describes what a particular individual (say Mary) sitting in the crowd experiences over time, while the latter describes <i>the entire crowd</i> at a given frozen instant in time, where some people have their hands up and others have their hands down.</p>
+<div class="infoblock">
+<div class="blocktitle">Remark</div>
+<div class="blockcontent">
+<p>Mathematically, I interpreted the professor's statements as follows: if we have some function of both position and space <img class="eq" src="eqs/4593340594708071136-130.png" alt="u(x,t)" style="vertical-align: -5px" />, and we wish to consider just some one-dimensional &lsquo;slice&rsquo; of it, we can either fix a particular <i>position</i> <img class="eq" src="eqs/5999452984665080490-130.png" alt="x_0" style="vertical-align: -4px" /> and see the behavior along the time coordinate by looking at <img class="eq" src="eqs/2761528630237527140-130.png" alt="u(x_0,t) = f(t)" style="vertical-align: -5px" />, or alternatively, we can freeze at a particular <i>time</i> <img class="eq" src="eqs/1495230934685649158-130.png" alt="t_0" style="vertical-align: -4px" /> and see the behavior along the spatial coordinate <img class="eq" src="eqs/7938973999819013327-130.png" alt="u(x,t_0) = g(x)" style="vertical-align: -5px" />. Both <img class="eq" src="eqs/509596383741784061-130.png" alt="f(t)" style="vertical-align: -5px" /> and/or <img class="eq" src="eqs/3644967746745489504-130.png" alt="g(x)" style="vertical-align: -5px" /> can be periodic, but the physical <i>interpretation</i> is different in the two cases.</p>
+</div></div>
+<h2>Dispersion relation</h2>
+<p>We then defined more basic terminology of how to talk about repeating patterns in time or in space:</p>
+<ul>
+<li><p>Periodicity in time is described by the <b>frequency</b>, denoted <img class="eq" src="eqs/9213219682577124982-130.png" alt="lambda" style="vertical-align: -1px" /> (lambda). It is the number of times the pattern repeats every second, and has units of 1/time. Typically it's 1/second or Hz.</p>
+</li>
+<li><p>Periodicity in space is described by the <b>wavelength</b>, denoted <img class="eq" src="eqs/7083357291912387992-130.png" alt="nu" style="vertical-align: -0px" /> (nu). It is the (spatial) distance between repeating patterns, and it has units of length.</p>
+</li>
+</ul>
+<p>For a travelling wave, the frequency and wavelength are related by the <b>dispersion relation</b> <img class="eq" src="eqs/5582193720319369267-130.png" alt="nu = v / lambda" style="vertical-align: -5px" />, where v is the speed of the travelling wave. Note that this statement is the only dimensionally possible answer (since speed has units of length / time); it's just a restatement of the classic statement &lsquo;&lsquo;distance equals rate times time&rsquo;&rsquo;.</p>
+<p>Of course, this stuff was not new to anyone in the class. The professor recognized this and remarked that even though the material was hardly challenging, it was well worth going over just to standardize the notation. Moreover, the dispersion relation was the first example in our class of a <b>reciprocal relationship</b> between two fundamental physical quantities. That is, the wavelength and the frequency are inversely related &ndash; if one went up, the other would go down. Again, this concept is not terribly hard, but it turns out to be a <i>deep organizational principle</i> in the course, and it'll be a common theme in Fourier analysis.</p>
+<p>Now that we had the basics out of the way, it was time to be a bit more precise about &lsquo;&lsquo;pattern&rsquo;&rsquo; and &lsquo;&lsquo;periodic&rsquo;&rsquo;.</p>
+<h2>Periodic Functions</h2>
+<p>So far we've just talked about periodic patterns; to be more specific, let's say that the pattern is in the value of a function. When we say that the pattern &lsquo;&lsquo;repeats,&rsquo;&rsquo; we just mean that the function takes on the same value after some period. This leads to the definition</p>
+<div class="infoblock">
+<div class="blocktitle">Definition</div>
+<div class="blockcontent">
+<p>A function <img class="eq" src="eqs/13056039271-130.png" alt="f" style="vertical-align: -4px" /> is <b>periodic</b> if its values repeat. In other words, if we can find some <b>period</b> <img class="eq" src="eqs/6195425040885570223-130.png" alt="T &gt; 0" style="vertical-align: -1px" /> such that </p>
+
+<div class="eqwl"><img class="eqwl" src="eqs/2068754630106144847-130.png" alt="     f(t) = f(t + T) " />
+<br /></div><p>for all <img class="eq" src="eqs/14848044661-130.png" alt="t" style="vertical-align: -1px" />, then we say that <img class="eq" src="eqs/13056039271-130.png" alt="f" style="vertical-align: -4px" /> is periodic with period <img class="eq" src="eqs/10752032341-130.png" alt="T" style="vertical-align: -0px" />. The smallest value of <img class="eq" src="eqs/10752032341-130.png" alt="T" style="vertical-align: -0px" /> for which this holds is called the <i>fundamental period</i> or more commonly just &lsquo;&lsquo;<i>the period</i>.&rsquo;&rsquo;</p>
+</div></div>
+<p>We made a few remarks at this point:</p>
+<ul>
+<li><p>Earlier we were talking generally about patterns, now we're talking about the <i>value of a function</i>.</p>
+</li>
+<li><p>We called the argument of the function <img class="eq" src="eqs/14848044661-130.png" alt="t" style="vertical-align: -1px" />, but there's no reason for it to necessarily represent <i>time</i>; we just need to put <i>something</i> there, so might as well call it <img class="eq" src="eqs/14848044661-130.png" alt="t" style="vertical-align: -1px" />.</p>
+</li>
+<li><p>Mathematicians call <img class="eq" src="eqs/13056039271-130.png" alt="f" style="vertical-align: -4px" /> a function; engineers call it a signal. It's the same concept, just different lingo. (Physicists call it a function too&hellip;)</p>
+</li>
+<li><p>This is a rather strict requirement on a function! It has to hold for <i>all</i> <img class="eq" src="eqs/14848044661-130.png" alt="t" style="vertical-align: -1px" />, and the period <img class="eq" src="eqs/10752032341-130.png" alt="T" style="vertical-align: -0px" /> must be quite special&hellip;</p>
+</li>
+</ul>
+<p>We also made a few comments about how a periodic function necessarily has <i>many</i> different periods; that is, if <img class="eq" src="eqs/10752032341-130.png" alt="T" style="vertical-align: -0px" /> is a period, then <img class="eq" src="eqs/6400038450057792-130.png" alt="2T" style="vertical-align: -0px" />, <img class="eq" src="eqs/6528039219058831-130.png" alt="3T" style="vertical-align: -1px" />, etc. are all periods of the function. We can intuitively see this, since if the pattern repeats every <img class="eq" src="eqs/10752032341-130.png" alt="T" style="vertical-align: -0px" /> units of time, it must repeat again after <img class="eq" src="eqs/6400038450057792-130.png" alt="2T" style="vertical-align: -0px" /> units; mathematically,</p>
+
+<div class="eqwl"><img class="eqwl" src="eqs/6620713457321489958-130.png" alt="     f(t + 2T) = f(t + T + T) = f(t + T) = f(t). " />
+<br /></div><p>A similar argument holds for <i>negative</i> values of the period; that is, if <img class="eq" src="eqs/10752032341-130.png" alt="T" style="vertical-align: -0px" /> is a period, then <img class="eq" src="eqs/5760034605051921-130.png" alt="-T" style="vertical-align: -0px" /> is also a period as well, since</p>
+
+<div class="eqwl"><img class="eqwl" src="eqs/2382792046332479993-130.png" alt="     f(t - T) = f(t - T + T) = f(t). " />
+<br /></div><p>Combining these facts, we end up with the result that for <i>any</i> integer <img class="eq" src="eqs/9984030031-130.png" alt="N" style="vertical-align: -0px" />, a function periodic with period <img class="eq" src="eqs/10752032341-130.png" alt="T" style="vertical-align: -0px" /> is also periodic with period <img class="eq" src="eqs/9984059982090044-130.png" alt="NT" style="vertical-align: -0px" />; that is, <img class="eq" src="eqs/8554003665859757810-130.png" alt="f(t + NT) = f(t)" style="vertical-align: -5px" />.</p>
+<p>We made one final point about the many possible periods. Normally, we when talk about &lsquo;&lsquo;the period&rsquo;&rsquo; of a function, we mean the smallest possible period, and it's sort of implied that the pattern also repeats after any integer multiple of that period. But the fact that the function also has periods <img class="eq" src="eqs/1796318433784242999-130.png" alt="..., -3T, -2T, -T, 0, T, 2T, 3T, ..." style="vertical-align: -4px" /> will become another theme of the course; who knows, maybe this can motivate the Fourier series a bit too&hellip;</p>
+<h2>Sine and Cosine</h2>
+<p>Well, we've been talking about periodic functions for a bit now, but we really should make sure these mathematical objects actually <i>do exist</i>. Miraculously, they do &ndash; we have the nice model functions of <img class="eq" src="eqs/7347881844175465640-130.png" alt="sin t" style="vertical-align: -1px" /> and <img class="eq" src="eqs/7773816956290595577-130.png" alt="cos t" style="vertical-align: -1px" />, which, as we all know and love, are periodic functions with a fundamental period of <img class="eq" src="eqs/1342477813241441004-130.png" alt="T = 2pi" style="vertical-align: -1px" />. </p>
+<p>Again, the professor remarked that of course we're all intimately familiar with our sines and cosines. But there's nothing more satisfying than reflecting on what we already know to feel better about ourselves, so we spent a bit of time doing that.</p>
+<p>There are a few ways to &lsquo;&lsquo;define&rsquo;&rsquo; the sine and cosine; some of which are more enlightening than others:</p>
+<ul>
+<li><p>Our first exposition was likely in trigonometry class, where we learned the ratio-of-sides-of-a-triangle definition. However, this picture only made sense for acute angles <img class="eq" src="eqs/5179806648303708846-130.png" alt="theta" style="vertical-align: -1px" /> where <img class="eq" src="eqs/6005783064330826960-130.png" alt="0 &lt; theta &lt; pi/2" style="vertical-align: -5px" />, so it wasn't the full picture.</p>
+</li>
+<li><p>In calculus class, we learned about Taylor series, and then sine and cosine could be represented as the sum of an infinite power series as</p>
+</li>
+</ul>
+
+<div class="eqwl"><img class="eqwl" src="eqs/1954218304010510732-130.png" alt="     sin x = x - frac{x^3}{3!} + frac{x^5}{5!} + ... " />
+<br /></div>
+<div class="eqwl"><img class="eqwl" src="eqs/6892666656136670034-130.png" alt="     cos x = 1 - frac{x^2}{2!} + frac{x^6}{6!} + ... " />
+<br /></div><ul>
+<li><p>Or perhaps even later, in the study of differential equations, the sines and cosines proved to be a nice basis for the solution set of the differential equation <img class="eq" src="eqs/4193764009328284037-130.png" alt="frac{d^2y}{dx^2} = - y" style="vertical-align: -9px" />, which is true, but doesn't help us really understand the nature of these functions&hellip;</p>
+</li>
+</ul>
+<p>None of these definitions, however, helps us understand why these glorious functions are <i>periodic</i>; that is, why <img class="eq" src="eqs/2813060258781948301-130.png" alt="sin(x) = sin(x + 2pi)" style="vertical-align: -5px" />. For this insight, we need use the definition of sines and cosines as <i>coordinates on the unit circle</i>. If we do this, it becomes quite clear that the (very nontrivial!) property of periodicity comes from &lsquo;&lsquo;wrapping around&rsquo;&rsquo;: when you increase the angle by <img class="eq" src="eqs/4814073714822610791-130.png" alt="2pi" style="vertical-align: -1px" />, you return to the same point on the unit circle, and for this reason, the function repeats every <img class="eq" src="eqs/4814073714822610791-130.png" alt="2pi" style="vertical-align: -1px" /> radians.</p>
+<p>On this note, class was dismissed.</p>
+<div id="footer">
+<div id="footer-text">
+Page generated 2019-01-28 12:43:57 PST, by <a href="http://jemdoc.jaboc.net/">jemdoc</a>.
+(<a href="lec1.jemdoc">source</a>)
+</div>
+</div>
+</td>
+</tr>
+</table>
+</body>
+
+<!-- Mirrored from jeffjar.me/fourier/lec1.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Jan 2022 07:37:49 GMT -->
+</html>
